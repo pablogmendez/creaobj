@@ -1,0 +1,24 @@
+body {
+	/*position: fixed;
+	top: 25%;*/
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+/* Dropdown menu background color*/
+
+nav {
+  margin-top: 20px;
+  box-shadow: 5px 4px 5px #000;
+}
+
+
+.navbar-nav > li > .dropdown-menu {     background-color: #222222;}
+
+/* Dropdown menu font color*/ 
+
+ .navbar-nav > li > .dropdown-menu a{   color: #9d9d99;  }
+ .navbar-nav > li > .dropdown-menu a:hover,  .navbar-nav > li > .dropdown-menu a:focus {   color: #ffffff;  background-color: #222222;}
+
+/*.navbar-brand {
+	  margin-top: -15px;
+}*/

@@ -1,0 +1,46 @@
+Node server running on http://localhost:3000
+{ Error: Command failed: /home/pablo/Escritorio/test1.sh
+
+    at ChildProcess.exithandler (child_process.js:204:12)
+    at emitTwo (events.js:106:13)
+    at ChildProcess.emit (events.js:191:7)
+    at maybeClose (internal/child_process.js:891:16)
+    at Socket.<anonymous> (internal/child_process.js:342:11)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at Pipe._handle.close [as _onclose] (net.js:497:12)
+  killed: false,
+  code: 1,
+  signal: null,
+  cmd: '/home/pablo/Escritorio/test1.sh' }
+campo1|campo2|campo4|campo3
+
+::ffff:127.0.0.1 - - [18/Jun/2017:11:55:35 +0000] "GET /build/banca/testing HTTP/1.1" 200 2 "-" "curl/7.47.0"
+{ Error: Command failed: /home/pablo/Escritorio/test1.sh
+
+    at ChildProcess.exithandler (child_process.js:204:12)
+    at emitTwo (events.js:106:13)
+    at ChildProcess.emit (events.js:191:7)
+    at maybeClose (internal/child_process.js:891:16)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+  killed: false,
+  code: 1,
+  signal: null,
+  cmd: '/home/pablo/Escritorio/test1.sh' }
+campo1|campo2|campo4|campo3
+
+::ffff:127.0.0.1 - - [18/Jun/2017:11:55:36 +0000] "GET /build/banca/testing HTTP/1.1" 200 2 "-" "curl/7.47.0"
+{ Error: Command failed: /home/pablo/Escritorio/test1.sh
+
+    at ChildProcess.exithandler (child_process.js:204:12)
+    at emitTwo (events.js:106:13)
+    at ChildProcess.emit (events.js:191:7)
+    at maybeClose (internal/child_process.js:891:16)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+  killed: false,
+  code: 1,
+  signal: null,
+  cmd: '/home/pablo/Escritorio/test1.sh' }
+campo1|campo2|campo4|campo3
+
+::ffff:127.0.0.1 - - [18/Jun/2017:11:55:37 +0000] "GET /build/banca/testing HTTP/1.1" 200 2 "-" "curl/7.47.0"

@@ -20,7 +20,7 @@
 			</div>
 		</div>
 		<div ng-show="productoSeleccionado" class="animated fadeIn">
-			<form ng-submit="resumenOperacion()" novalidate>
+			<form id="formularioCreacionObjetos" ng-submit="resumenOperacion()" novalidate>
 				<div class="row">
 					<div class="col-sm-12">
 			  			<hr>
@@ -40,7 +40,10 @@
 				    		</div>
 				    	</div>
 				    	<div class="col-sm-8">
-				    		 <input type="text" class="form-control" ng-model="titulo" placeholder="Ingrese un título alusivo a la versión a desarrollar" required>
+				    		<input type="text" class="form-control" ng-model="titulo" placeholder="Ingrese un título alusivo a la versión a desarrollar" required>
+				    		<div class="alert alert-danger" ng-show="submitted && !titulo">
+                  				El campo <strong>Título</strong> es obligatorio.
+                			</div>
 				    	</div>
 				    </div>
 				    <br>
@@ -66,7 +69,7 @@
 					    		<div class="col-sm-2">Asignar a:</div>
 					    		<div class="col-sm-10">
 						    		<div class="form-group">
-						      			<select class="form-control">
+						      			<select class="form-control" ng-model="desarrolladorSeleccionado">
 									        <option>DESA1</option>
 									        <option>DESA2</option>
 									        <option>DESA3</option>
@@ -99,13 +102,16 @@
 				    	</div>
 				  		<div class="col-sm-8">
 				    		<div class="form-group">
-				      			<select class="form-control" ng-model="tipoRelease">
+				      			<select class="form-control" ng-model="tipoReleaseSeleccionado">
 							        <option>Normal</option>
 							        <option>NormalSinPrepro</option>
 							        <option>Emergencia</option>
 							        <option>Directo</option>
 				      			</select>
 							</div>
+							<div class="alert alert-danger" ng-show="submitted && !tipoReleaseSeleccionado">
+                  				El campo <strong>Tipo de despliegue</strong> es obligatorio.
+                			</div>
 				    	</div>  	
 				    </div>
 				    <br>
@@ -117,7 +123,7 @@
 				    		</div>
 				    	</div>
 				    	<div class="col-sm-8">
-				    		<input type="text" class="form-control" ng-model="ppm" placeholder="Ingrese el número de PPM de la versión a desarrollar" required>
+				    		<input type="text" class="form-control" ng-model="ppm" placeholder="Ingrese el número de PPM de la versión a desarrollar">
 				    	</div>
 				    </div>
 				    <br>
@@ -131,6 +137,9 @@
 				    	</div>
 				    	<div class="col-sm-8">
 				    		<input type="text" class="form-control" ng-model="version" placeholder="Ingrese la versión release" required>
+				    		<div class="alert alert-danger" ng-show="submitted && !version">
+                  				El campo <strong>Versión</strong> es obligatorio.
+                			</div>
 				    	</div>
 				    </div>
 				    <br>
@@ -144,6 +153,9 @@
 				    	</div>
 						<div class="col-sm-8">
 				    		<input type="text" class="form-control" ng-model="descripcion" placeholder="Ingrese la descripción del release" required>
+				    		<div class="alert alert-danger" ng-show="submitted && !descripcion">
+                  				El campo <strong>Descripción</strong> es obligatorio.
+                			</div>
 				    	</div>
 				    </div>
 			    </div>
@@ -157,7 +169,7 @@
 			    		<span><font size="2"><i>Recuerde que los campos marcados con (<font color="red">*</font>) son de caracter obligatorio.</i></font></span>
 			    	</div>
 					<div class="col-sm-2">
-			  			<input type="submit" class="btn btn-primary" aria-haspopup="true" aria-expanded="false" value="Siguiente" style="float:right;width: 75%;">
+			  			<input type="submit" class="btn btn-primary" aria-haspopup="true" aria-expanded="false" value="Siguiente" ng-disabled="!dimensionsChecked && !releaseControlChecked" style="float:right;width: 75%;">
 			  		</div>
 			    </div>
 			</form>
@@ -166,32 +178,90 @@
 
 	<div ng-show="mostrarResumen" class="animated fadeIn">
 		<div class="row">
-			<label>&nbsp&nbspResumen de la operación para el producto {{productoSeleccionado}}<label>	
+			<label>&nbsp&nbspResumen de la operación para el producto <u>{{productoSeleccionado}}</u><label>	
 		</div>
 		<div class="row">
 			<div class="col-sm-12"><hr></div>
 	    </div>
 	    <div class="row">
-			<div class="col-sm-12"><label>Dimensions</label></div>
+			<div ng-if="dimensionsChecked" class="col-sm-12"><label>Dimensions</label></div>
+			<div ng-if="!dimensionsChecked" class="col-sm-12"><label>Dimensions&nbsp&nbsp.....................................................&nbsp&nbspNo</label></div>
 	    </div>
-	    <div class="row">
-			<div class="col-sm-4">
-			</div>
-			<div class="col-sm-12">
-			</div>
-	    </div>
+	    <div ng-show="dimensionsChecked">
+		    <div class="row">
+		    	<div class="col-sm-4">
+		    		<div class="col-sm-2"></div>
+		    		<div class="col-sm-10">
+		    			Título&nbsp&nbsp................................................&nbsp&nbsp{{titulo}}
+		    		</div>
+		    	</div>
+		    </div>
+		    <br>
+		    <div class="row">
+		    	<div class="col-sm-4">
+		    		<div class="col-sm-2"></div>
+		    		<div class="col-sm-10">
+		    			<div ng-if="desarrolloEvoChecked">Desarrollo&nbspEvo&nbsp&nbsp....................................&nbsp&nbspSi</div>
+		    			<div ng-if="!desarrolloEvoChecked">Desarrollo&nbspEvo&nbsp&nbsp...................................&nbsp&nbspNo</div>
+		    		</div>
+		    	</div>
+		    </div>
+		    <br>
+		    <div class="row">
+		    	<div class="col-sm-4">
+		    		<div class="col-sm-2"></div>
+		    		<div class="col-sm-10">
+		    			<div ng-if="crearTaskChecked">Crear&nbspTask&nbsp&nbsp.........................................&nbsp&nbspSi&nbsp-&nbspAsignar&nbspa:&nbsp{{desarrolladorSeleccionado}}</div>
+		    			<div ng-if="!crearTaskChecked">Crear&nbspTask&nbsp&nbsp.........................................&nbsp&nbspNo</div>
+		    		</div>
+		    	</div>
+		    </div>
+		</div>
 	    <div class="row">
 			<div class="col-sm-12"><hr></div>
 	    </div>
 	    <div class="row">
-			<div class="col-sm-12"><label>Release Control</label></div>
+			<div ng-if="releaseControlChecked" class="col-sm-12"><label>Release&nbspControl</label></div>
+			<div ng-if="!releaseControlChecked" class="col-sm-12"><label>Release&nbspControl&nbsp&nbsp...............................................&nbsp&nbspNo</label></div>
 	    </div>
-	    <div class="row">
-			<div class="col-sm-4">
-			</div>
-			<div class="col-sm-12">
-			</div>
-	    </div>
+	    <div ng-show="releaseControlChecked">
+		    <div class="row">
+		    	<div class="col-sm-4">
+		    		<div class="col-sm-2"></div>
+		    		<div class="col-sm-10">
+		    			Tipo&nbspde&nbspdespliegue&nbsp&nbsp..............................&nbsp&nbsp{{tipoReleaseSeleccionado}}
+		    		</div>
+		    	</div>
+		    </div>
+		    <br>
+		    <div class="row">
+		    	<div class="col-sm-4">
+		    		<div class="col-sm-2"></div>
+		    		<div class="col-sm-10">
+		    			<div ng-if="ppm">PPM&nbsp&nbsp...................................................&nbsp&nbsp{{ppm}}</div>
+		    			<div ng-if="!ppm">PPM&nbsp&nbsp..................................................&nbsp&nbspNo</div>
+		    		</div>
+		    	</div>
+		    </div>
+		    <br>
+		    <div class="row">
+		    	<div class="col-sm-4">
+		    		<div class="col-sm-2"></div>
+		    		<div class="col-sm-10">
+		    			Versión&nbsp&nbsp.............................................&nbsp&nbsp{{version}}
+		    		</div>
+		    	</div>
+		    </div>
+		    <br>
+		    <div class="row">
+		    	<div class="col-sm-4">
+		    		<div class="col-sm-2"></div>
+		    		<div class="col-sm-10">
+		    			Descripción&nbsp&nbsp........................................&nbsp&nbsp{{descripcion}}
+		    		</div>
+		    	</div>
+		    </div>
+		</div>
 		<div class="row">
 			<div class="col-sm-12"><hr></div>
 	    </div>

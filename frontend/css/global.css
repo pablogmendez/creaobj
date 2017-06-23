@@ -1,3 +1,7 @@
+html {
+  position: relative;
+}
+
 body {
 	/*position: fixed;
 	top: 25%;*/
@@ -19,6 +23,23 @@ nav {
  .navbar-nav > li > .dropdown-menu a{   color: #9d9d99;  }
  .navbar-nav > li > .dropdown-menu a:hover,  .navbar-nav > li > .dropdown-menu a:focus {   color: #ffffff;  background-color: #222222;}
 
-/*.navbar-brand {
+.navbar-brand {
 	  margin-top: -15px;
-}*/
+}
+
+#creaobjetossubmit {
+  display: block; width: 100%;
+}
+
+#loginpanel {
+  background:#FAFBFC;
+}
+
+#loginsubmit {
+  display: block; width: 100%;
+}
+
+#info {
+  color: black;
+}
+

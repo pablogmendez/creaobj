@@ -1,43 +1,225 @@
 <div class="panel panel-default ">
   <div class="panel-heading">
-    <h3 class="panel-title">Creador automatico de objetos de Serena</h3>
+    <h3 class="panel-title">Creador automático de objetos para Serena - Paso {{paso}}/{{totalPasos}}</h3>
   </div>
   <div class="panel-body">
-	<div class="dropdown" >
-	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
-	    Seleccione un producto <span class="caret"></span>
-	  </button>
-	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-	    <li><a>BANCA</a></li>
-	    <li><a>ADMID</a></li>
-	    <li><a>ADMLEG</a></li>
-	  </ul>
+  	<div ng-show="mostrarFormulario">
+	    <div class="row">
+	    	<div class="col-sm-4">
+	    		<label>Seleccione un producto<label>	
+	    	</div>
+	    	<div class="col-sm-8">
+	    		<div class="form-group">
+			      <select class="form-control" ng-model="productoSeleccionado">
+			        <option>BANCA</option>
+			        <option>ADMID</option>
+			        <option>SCM</option>
+			        <option>GCA</option>
+			      </select>
+				</div>
+			</div>
+		</div>
+		<div ng-show="productoSeleccionado" class="animated fadeIn">
+			<form ng-submit="resumenOperacion()" novalidate>
+				<div class="row">
+					<div class="col-sm-12">
+			  			<hr>
+			  		</div>
+			    </div>
+				<div class="row">
+			    	<div class="col-sm-4">
+			    		<input type="checkbox" name="dimensions" value="dimensions" ng-model="dimensionsChecked"><label>&nbspDimensions<label>	
+			    	</div>
+			    </div>
+			    <div  ng-show="dimensionsChecked" class="animated fadeIn">
+				    <div class="row">
+				    	<div class="col-sm-4">
+				    		<div class="col-sm-2"></div>
+				    		<div class="col-sm-10">
+				    			Título<font color="red">*</font>
+				    		</div>
+				    	</div>
+				    	<div class="col-sm-8">
+				    		 <input type="text" class="form-control" ng-model="titulo" placeholder="Ingrese un título alusivo a la versión a desarrollar" required>
+				    	</div>
+				    </div>
+				    <br>
+				    <div class="row">
+				    	<div class="col-sm-4">
+				    		<div class="col-sm-2">
+				    		</div>
+				    		<div class="col-sm-10">
+				    			<input type="checkbox" name="desarrolloEvo" value="desarrolloEvo" ng-model="desarrolloEvoChecked">&nbspDesarrollo Evo
+				    		</div>
+				    	</div>
+				    </div>
+				    <br>
+				    <div class="row">
+				    	<div class="col-sm-4">
+				    		<div class="col-sm-2"></div>
+				    		<div class="col-sm-10">
+				    			<input type="checkbox" name="crearTask" value="crearTask" ng-model="crearTaskChecked">&nbspCrear Task
+				    		</div>
+				    	</div>
+				    	<div  class="animated fadeIn" ng-show="crearTaskChecked">
+					    	<div class="col-sm-8">
+					    		<div class="col-sm-2">Asignar a:</div>
+					    		<div class="col-sm-10">
+						    		<div class="form-group">
+						      			<select class="form-control">
+									        <option>DESA1</option>
+									        <option>DESA2</option>
+									        <option>DESA3</option>
+									        <option>DESA4</option>
+						      			</select>
+									</div>
+								</div>
+					    	</div>
+					    </div>
+				    </div>
+			    </div>
+				<div class="row">
+					<div class="col-sm-12">
+			  			<hr>
+			  		</div>
+			    </div>
+			    <div class="row">
+			    	<div class="col-sm-4">
+			    		<input type="checkbox" name="releaseControl" value="releaseControl" ng-model="releaseControlChecked"><label>&nbsp<label>Release Control<label>	
+			    	</div>
+			    </div>
+			    <div  ng-show="releaseControlChecked" class="animated fadeIn">
+				    <div class="row">
+				    	<div class="col-sm-4">
+				    		<div class="col-sm-2">
+				    		</div>
+				    		<div class="col-sm-10">
+				    			Tipo de despliegue<font color="red">*</font>
+				    		</div>
+				    	</div>
+				  		<div class="col-sm-8">
+				    		<div class="form-group">
+				      			<select class="form-control" ng-model="tipoRelease">
+							        <option>Normal</option>
+							        <option>NormalSinPrepro</option>
+							        <option>Emergencia</option>
+							        <option>Directo</option>
+				      			</select>
+							</div>
+				    	</div>  	
+				    </div>
+				    <br>
+				    <div class="row">
+				    	<div class="col-sm-4">
+				    		<div class="col-sm-2"></div>
+				    		<div class="col-sm-10">
+				    			PPM
+				    		</div>
+				    	</div>
+				    	<div class="col-sm-8">
+				    		<input type="text" class="form-control" ng-model="ppm" placeholder="Ingrese el número de PPM de la versión a desarrollar" required>
+				    	</div>
+				    </div>
+				    <br>
+				    <div class="row">
+				    	<div class="col-sm-4">
+				    		<div class="col-sm-2">
+				    		</div>
+				    		<div class="col-sm-10">
+				    			Versión<font color="red">*</font>
+				    		</div>
+				    	</div>
+				    	<div class="col-sm-8">
+				    		<input type="text" class="form-control" ng-model="version" placeholder="Ingrese la versión release" required>
+				    	</div>
+				    </div>
+				    <br>
+				    <div class="row">
+				    	<div class="col-sm-4">
+				    		<div class="col-sm-2">
+				    		</div>
+				    		<div class="col-sm-10">
+				    			Descripción<font color="red">*</font>
+				    		</div>
+				    	</div>
+						<div class="col-sm-8">
+				    		<input type="text" class="form-control" ng-model="descripcion" placeholder="Ingrese la descripción del release" required>
+				    	</div>
+				    </div>
+			    </div>
+			    <div class="row">
+					<div class="col-sm-12">
+			  			<hr>
+			  		</div>
+			    </div>
+			    <div class="row">
+			    	<div class="col-sm-10">
+			    		<span><font size="2"><i>Recuerde que los campos marcados con (<font color="red">*</font>) son de caracter obligatorio.</i></font></span>
+			    	</div>
+					<div class="col-sm-2">
+			  			<input type="submit" class="btn btn-primary" aria-haspopup="true" aria-expanded="false" value="Siguiente" style="float:right;width: 75%;">
+			  		</div>
+			    </div>
+			</form>
+		</div>
 	</div>
-  	<div ng-show="productoSeleccionado">
-	    <form id="formulariologin" ng-submit="validarLogin()" novalidate>
-		    <br>
-		    Usuario
-		    <input type="text" class="form-control" ng-model="usuario" placeholder="Ingrese su usuario de dominio Credicoop" required>
-		    <div class="alert alert-warning" ng-show="formulariologin.$submitted && !usuario">
-		      El campo <strong>Usuario</strong> no puede estar vacío.
-		    </div>
-		    <div class="alert alert-warning" ng-show="formulariologin.$submitted && !usuarioOk">
-		      El <strong>Usuario</strong> ingresado es invalido.
-		    </div>
-		    <br>
-		    Contraseña
-		    <input type="password" class="form-control" ng-model="password" placeholder="Ingrese su contraseña" required>
-		    <div class="alert alert-warning" ng-show="formulariologin.$submitted && !password">
-		      El campo <strong>Contraseña</strong> no puede estar vacío.
-		    </div>
-		    <div class="alert alert-warning" ng-show="formulariologin.$submitted && !passwordOk">
-		      La <strong>Contraseña</strong> ingresada es invalida.
-		    </div>
-		    <br>
-		    <input type="submit" id="loginsubmit" class="btn btn-primary" aria-haspopup="true" aria-expanded="false" value="Ingresar">
-		    <br>
-		    <br>
-	  	</form>
-  	</div>
+
+	<div ng-show="mostrarResumen" class="animated fadeIn">
+		<div class="row">
+			<label>&nbsp&nbspResumen de la operación para el producto {{productoSeleccionado}}<label>	
+		</div>
+		<div class="row">
+			<div class="col-sm-12"><hr></div>
+	    </div>
+	    <div class="row">
+			<div class="col-sm-12"><label>Dimensions</label></div>
+	    </div>
+	    <div class="row">
+			<div class="col-sm-4">
+			</div>
+			<div class="col-sm-12">
+			</div>
+	    </div>
+	    <div class="row">
+			<div class="col-sm-12"><hr></div>
+	    </div>
+	    <div class="row">
+			<div class="col-sm-12"><label>Release Control</label></div>
+	    </div>
+	    <div class="row">
+			<div class="col-sm-4">
+			</div>
+			<div class="col-sm-12">
+			</div>
+	    </div>
+		<div class="row">
+			<div class="col-sm-12"><hr></div>
+	    </div>
+		<div class="row">
+			<div class="col-sm-2">
+				<button type="button" class="btn btn-primary" style="float:left;width: 75%;" ng-click="formularioAlta()">Atras</button>
+			</div>
+	    	<div class="col-sm-8"></div>
+			<div class="col-sm-2">
+				<button type="button" class="btn btn-success" style="float:right;width: 75%;" ng-click="crearObjetos()">Crear objetos</button>
+	  		</div>
+	    </div>	
+	</div>
+
+	<div ng-show="mostrarCreaObjetos" class="animated fadeIn">
+		<div class="row">
+			<label>&nbsp&nbspObjetos creados exitosamente</label>
+		</div>
+		<div class="row">
+			<div class="col-sm-12"><hr></div>
+	    </div>
+		<div class="row">
+			<div class="col-sm-2"></div>
+	    	<div class="col-sm-8"></div>
+			<div class="col-sm-2">
+				<button type="button" class="btn btn-primary" style="float:right;width: 75%;" ng-click="volverAlInicio()">Volver al inicio</button>
+	  		</div>
+	    </div>	
+	</div>
   </div>
 </div>

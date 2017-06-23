@@ -1,8 +1,14 @@
-<nav class="navbar navbar-inverse animated fadeIn" role="navigation">
+<nav class="navbar navbar-inverse animated fadeIn navbar-toggleable-md collapsed" role="navigation">
     <div class="navbar-header">
-        <a class="navbar-brand" ui-sref="#"><img alt="Banco Credicoop" src="img/logo1l.jpeg"></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" ui-sref="#"><img alt="Banco Credicoop" src="img/brand_logo.png"></a>
     </div>
-    <ul class="nav navbar-nav">
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Serena <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -15,12 +21,13 @@
             <li><a ui-sref=".consolidarversion">Consolidar version</a></li>
           </ul>
         </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><i class="fa fa-question fa-lg" aria-hidden="true"></i>&nbspAyuda</a></li>
         <li><a href="#"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>&nbspSalir</a></li>
         <li><a></a></li>
-    </ul>
+      </ul>
+    </div>
 </nav>
 
-<div ui-view></div> 		
+<div ui-view></div>

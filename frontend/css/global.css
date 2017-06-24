@@ -46,3 +46,16 @@ nav {
 .loginlogo {
   background-color: #222222;
 }
+
+#shadowpanel  {
+  box-shadow: 5px 4px 5px #000;
+}
+
+.btn span.glyphicon {         
+  opacity: 0;       
+}
+.btn.active span.glyphicon {        
+  opacity: 1;       
+}
+
+#cssTable td, th {text-align:center; vertical-align:middle;}

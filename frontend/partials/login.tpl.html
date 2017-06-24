@@ -1,6 +1,6 @@
 <div class="container-fluid animated fadeIn">
-  <div class="panel panel-default" style="margin-top: 170px;">
-    <div class="panel-body" style="box-shadow: 5px 4px 5px #000;">
+  <div class="panel panel-default" style="margin-top: 170px;" id="shadowpanel">
+    <div class="panel-body">
       <div class="row loginlogo">
         <div class="col-sm-2">
           &nbsp&nbsp&nbsp&nbsp<img src="../img/brand_logo.png">
@@ -41,16 +41,19 @@
             </div>
             <div class="col-sm-5" ng-show="submitted && !passwordOk && !usuarioOk">
               <div class="alert alert-danger" style="height: 30px">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="position: relative; top: -10px;"></span>
                 <font style="font-size: 90%; position: relative; top: -10px;">El <strong>Usuario</strong> o la <strong>Contraseña</strong> ingresados son invalidos.</font>
               </div>
             </div>
             <div class="col-sm-4" ng-show="submitted && !usuario">
               <div class="alert alert-danger" style="height: 30px">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="position: relative; top: -10px;"></span>
                 <font style="font-size: 90%; position: relative; top: -10px;">El campo <strong>Usuario</strong> no puede estar vacío.</font>
               </div>
             </div>
             <div class="col-sm-4" ng-show="submitted && !password" >
               <div class="alert alert-danger" style="height: 30px">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="position: relative; top: -10px;"></span>
                 <font style="font-size: 90%; position: relative; top: -10px;">El campo <strong>Contraseña</strong> no puede estar vacío.</font>
               </div>
             </div>

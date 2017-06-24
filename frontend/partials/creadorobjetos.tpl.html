@@ -1,4 +1,4 @@
-<div class="panel panel-default ">
+<div class="panel panel-default " id="shadowpanel">
   <div class="panel-heading">
     <h3 class="panel-title">Creador automático de objetos para Serena - Paso {{paso}}/{{totalPasos}}</h3>
   </div>
@@ -166,7 +166,8 @@
 			    </div>
 			    <div class="row">
 			    	<div class="col-sm-10">
-			    		<span><font size="2"><i>Recuerde que los campos marcados con (<font color="red">*</font>) son de caracter obligatorio.</i></font></span>
+			    		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			    		<font size="2"><i>Recuerde que los campos marcados con (<font color="red">*</font>) son de caracter obligatorio.</i></font>
 			    	</div>
 					<div class="col-sm-2">
 			  			<input type="submit" class="btn btn-primary" aria-haspopup="true" aria-expanded="false" value="Siguiente" ng-disabled="!dimensionsChecked && !releaseControlChecked" style="float:right;width: 75%;">

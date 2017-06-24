@@ -1,8 +1,87 @@
-<div class="panel panel-default ">
-  <div class="panel-heading">
-    <h3 class="panel-title">Consolidar version de Sonar</h3>
-  </div>
-  <div class="panel-body">
-    Panel content
-  </div>
+<div class="panel panel-default " id="shadowpanel">
+	<div class="panel-heading">
+		<h3 class="panel-title">Consolidar version de Sonar</h3>
+	</div>
+	<div class="panel-body">
+	    <div class="row">
+			<div class="col-sm-4">
+				<label>Seleccione un producto<label>	
+			</div>
+			<div class="col-sm-8">
+				<div class="form-group">
+			      <select class="form-control" ng-model="productoSeleccionado">
+			        <option>BANCA</option>
+			        <option>ADMID</option>
+			        <option>SCM</option>
+			        <option>GCA</option>
+			      </select>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div ng-show="productoSeleccionado" class="animated fadeIn">		
+			<div class="panel panel-default ">
+				<div class="panel-body">
+				    <table class="table" id="cssTable">
+				    	<tr style="background-color:#F5F5F5;">
+				    		<th>#</th>
+				    		<th>Job ID</th>
+				    		<th>Stream</th>
+				    		<th>BLD Request</th>
+				    		<th>Fecha Inicio Build</th>
+				    		<th>Fecha Inicio Analisis</th>
+				    		<th>Estado</th>
+				    		<th>Sel.</th>
+				    	</tr>
+				    	<tbody>
+					    	<tr>
+					    		<td>1</td>
+					    		<td>12354</td>
+					    		<td>TESTING</td>
+					    		<td>DPS24_BLD_15</td>
+					    		<td>12-25-1236_09:15:45</td>
+					    		<td>12-25-1236_09:15:45</td>
+					    		<td>10</td>		    		
+					    		<td>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default btn-xs">
+											<input type="checkbox" autocomplete="off" ng-model="ch1">
+											<span class="glyphicon glyphicon-ok"></span>
+										</label>
+									</div>
+								</td>
+					    	</tr>
+					    	<tr>
+					    		<td>2</td>
+					    		<td>187854</td>
+					    		<td>TESTING</td>
+					    		<td>DPS24_BLD_18</td>
+					    		<td>12-25-1236_09:15:45</td>
+					    		<td>12-25-1236_09:15:45</td>
+					    		<td>10</td>		    		
+					    		<td>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default btn-xs">
+											<input type="checkbox" autocomplete="off" ng-model="ch2">
+											<span class="glyphicon glyphicon-ok"></span>
+										</label>
+									</div>
+								</td>
+					    	</tr>
+					    </tbody>
+				    </table>
+				    <hr>
+				    <div class="row">
+				    	<div class="col-sm-10">
+				    		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				    		<font size="2"><i>Recuerde que solo se listaran aquellas versiones que no hayan pasado las validaciones de SONAR o aquellas cuyo análisis aun no haya concluido. En el caso de enviarse un uevo proceso de BUILD, el DELIVER a SERENA de la versión pendiente actual será cancelado.</i></font>
+				    	</div>
+						<div class="col-sm-2">
+				    		<button type="button" class="btn btn-success" ng-click="consolidarVersion()" >Consolidar versión</button>
+				  		</div>
+				    </div>
+				</div>
+			</div>
+		</div>
+  	</div>
 </div>

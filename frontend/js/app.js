@@ -26,10 +26,6 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             url: '/consolidarversion',
             templateUrl: 'partials/consolidarversion.tpl.html',
             controller: 'ConsolidarVersionControl'
-        })
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('about', {
-            // we'll get to this in a bit       
         });
 
 });

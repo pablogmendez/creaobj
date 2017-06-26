@@ -37,12 +37,16 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-1"></div>
             <div class="col-sm-1">
-              <input type="submit" class="btn btn-primary" aria-haspopup="true" aria-expanded="false" value="Ingresar" style="height: 30px; font-size: 90%;">
+              <input type="submit" class="btn btn-primary" aria-haspopup="true" aria-expanded="false" value="Ingresar" style="height: 30px; font-size: 90%;" ng-disabled="loading">
+              
             </div>
-            <div class="col-sm-5" ng-show="submitted && !passwordOk && !usuarioOk">
+            <div class="col-sm-1" ng-show="loading">
+              <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+            </div>
+            <div class="col-sm-5" ng-show="submitted && !passwordOk && !usuarioOk && credValidadas">
               <div class="alert alert-danger" style="height: 30px">
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="position: relative; top: -10px;"></span>
-                <font style="font-size: 90%; position: relative; top: -10px;">El <strong>Usuario</strong> o la <strong>Contraseña</strong> ingresados son invalidos.</font>
+                <font style="font-size: 90%; position: relative; top: -10px;">{{mensajeValidacion}}</font>
               </div>
             </div>
             <div class="col-sm-4" ng-show="submitted && !usuario">

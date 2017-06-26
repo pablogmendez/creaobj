@@ -4,17 +4,31 @@
   </div>
   <div class="panel-body">
   	<div ng-show="mostrarFormulario">
-	    <div class="row">
+  		<div class="row" ng-show="mostrarError">
+  			<div class="col-sm-3"></div>
+  			<div class="col-sm-6">
+				<div class="alert alert-danger">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<font>{{mensajeConsultaProductos}}</font>
+				</div>
+			</div>
+  		</div>
+  		<div class="row" ng-show="loading">
+  			<div class="col-sm-5">
+	    	</div>
+	    	<div class="col-sm-6">
+	    		<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+	    	</div>
+  		</div>
+	    <div class="row" ng-show="mostrarProductos">
 	    	<div class="col-sm-4">
 	    		<label>Seleccione un producto<label>	
 	    	</div>
 	    	<div class="col-sm-8">
 	    		<div class="form-group">
 			      <select class="form-control" ng-model="productoSeleccionado">
-			        <option>BANCA</option>
-			        <option>ADMID</option>
-			        <option>SCM</option>
-			        <option>GCA</option>
+			      	<option ng-repeat="producto in productos">{{producto}}</option>
+			        
 			      </select>
 				</div>
 			</div>

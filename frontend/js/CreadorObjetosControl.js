@@ -1,10 +1,33 @@
 
-routerApp.controller('CreadorObjetosControl', function($scope, $location){
+routerApp.controller('CreadorObjetosControl', function($scope, $location, $http, GlobalService, GlobalConf){
 	$scope.paso=1;
 	$scope.totalPasos=3;
 	$scope.mostrarFormulario=true;
 	$scope.mostrarResumen=false;
 	$scope.mostrarCreaObjetos=false;
+	$scope.mostrarProductos=false;
+	$scope.mostrarError=false;
+	$scope.loading = true;
+
+	$http.get(GlobalConf.creador_objetos_url + "?action=getProducts&user=" + GlobalService.usuario + "&pass=" + GlobalService.password)
+	.then(function successCallback(response) {
+		console.log(response);
+		if(response.data.status == 0) {
+			$scope.loading = false;
+			$scope.mostrarProductos = true;
+			$scope.mostrarError = false;
+			$scope.productos = response.data.data;
+		}
+		else {
+			$scope.mensajeConsultaProductos = response.data.message;
+			$scope.loading = false;
+			$scope.mostrarError = true;
+		}
+	 }, function errorCallback(response) {
+	    $scope.mensajeConsultaProductos = "Error inespereado. (" + response.status + ") " + response.statusText;
+	   	$scope.loading = false;
+	   	$scope.mostrarError = true;
+	 });
 
 	$scope.resumenOperacion = function() {
 		var dmOk=false, rcOk=false;
